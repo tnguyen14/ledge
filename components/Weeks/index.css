@@ -1,0 +1,49 @@
+@import './Week.css';
+
+.transactions {
+  width: 95%;
+  margin: 0 auto 2em;
+}
+
+@media (min-width: 42.5em) {
+
+.transactions {
+    width: 90%
+}
+  }
+
+.transactions .top-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+.transactions .top-actions .form-group {
+      margin-bottom: 0;
+      width: 48%;
+    }
+
+@media (min-width: 42.5em) {
+
+.transactions .top-actions .form-group {
+        width: auto
+    }
+      }
+
+.transactions .top-actions label {
+      margin-right: 0.5em;
+      text-align: right;
+      margin-top: 0.3rem;
+      width: 5em;
+    }
+
+@media (min-width: 42.5em) {
+
+.transactions .top-actions .input-group {
+        width: calc(100% - 5.5em)
+    }
+      }
+
+.transactions .weeks {
+    margin-top: 0.5rem;
+  }

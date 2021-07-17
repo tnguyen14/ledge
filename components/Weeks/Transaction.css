@@ -1,0 +1,67 @@
+.transaction {
+  border-left: 5px solid var(--color-gray-300);
+  clear: left;
+  cursor: pointer;
+}
+  @media (min-width: 42.5em) {.transaction {
+    cursor: default
+}
+  }
+  .transaction[data-day='Mon'] {
+    border-left-color: var(--color-light-blue-100);
+  }
+  .transaction[data-day='Tue'] {
+    border-left-color: var(--color-light-blue-300);
+  }
+  .transaction[data-day='Wed'] {
+    border-left-color: var(--color-light-blue);
+  }
+  .transaction[data-day='Thu'] {
+    border-left-color: var(--color-light-blue-600);
+  }
+  .transaction[data-day='Fri'] {
+    border-left-color: var(--color-light-blue-700);
+  }
+  .transaction[data-day='Sat'] {
+    border-left-color: var(--color-light-blue-800);
+  }
+  .transaction[data-day='Sun'] {
+    border-left-color: var(--color-light-blue-900);
+  }
+  .transaction [data-field='amount'] {
+    color: white;
+  }
+  .transaction [data-field='day'],
+  .transaction [data-field='merchant'],
+  .transaction [data-field='amount'],
+  .transaction [data-field='source'] {
+    border-top-width: 2px;
+  }
+  @media (min-width: 42.5em) {
+  .transaction [data-field='day'],
+  .transaction [data-field='merchant'],
+  .transaction [data-field='amount'],
+  .transaction [data-field='source'] {
+      border-top-width: 1px
+  }
+    }
+  .transaction [data-field='description'],
+  .transaction [data-field='category'],
+  .transaction [data-field='action'] {
+    display: none;
+  }
+  .transaction.table-active [data-field='description'],
+    .transaction.table-active [data-field='category'],
+    .transaction.table-active [data-field='action'] {
+      display: table-cell;
+    }
+  @media (min-width: 42.5em) {
+    .transaction [data-field='description'],
+    .transaction [data-field='category'],
+    .transaction [data-field='action'] {
+      display: table-cell;
+    }
+    .transaction [data-field='action'] {
+      min-width: 6rem;
+    }
+  }

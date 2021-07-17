@@ -1,0 +1,144 @@
+@import './components/App/index.css';
+@import './components/Header/index.css';
+@import './components/Login/index.css';
+@import './components/Form/index.css';
+@import './components/Notification/index.css';
+@import './components/AccountStats/index.css';
+@import './components/AccountStats/CategoriesChart.css';
+@import './components/Weeks/index.css';
+@import './components/Weeks/Transaction.css';
+
+/* consult https://materializecss.com/color.html */
+:root {
+  --color-red: #f44336;
+  --color-purple: #9c27b0;
+  --color-deep-purple: #673ab7;
+  --color-indigo: #3f51b5;
+  --color-light-blue-100: #b3e5fc;
+  --color-light-blue-300: #4fc3f7;
+  --color-light-blue: #03a9f4;
+  --color-light-blue-600: #039be5;
+  --color-light-blue-700: #0288d1;
+  --color-light-blue-800: #0277bd;
+  --color-light-blue-900: #01579b;
+  --color-cyan: #00bcd4;
+  --color-teal: #009688;
+  --color-green: #4caf50;
+  --color-green-700: #388e3c;
+  --color-light-green: #8bc34a;
+  --color-lime: #cddc39;
+  --color-yellow: #ffeb3b;
+  --color-amber: #ffc107;
+  --color-orange: #ff9800;
+  --color-deep-orange: #ff5722;
+  --color-gray-100: #f5f5f5;
+  --color-gray-300: #e0e0e0;
+  --color-gray: #9e9e9e;
+  --color-blue-gray: #607d8b;
+}
+
+/* this used to be included in _reboot.scss (bootstrap),
+ * but apparently not anymore */
+a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.span-hint {
+  color: #212529; /* bootstrap body color */
+  margin: 0 0.5em;
+}
+
+.span-hint svg {
+    cursor: help;
+  }
+
+.legend {
+  border-radius: 3px;
+  display: inline-block;
+  margin-right: 0.7rem;
+  width: 0.7rem;
+  height: 1.3rem;
+}
+
+[data-cat='dineout'] .badge, [data-cat='dineout'] .legend, [data-cat='dineout'] .bar-piece {
+    background-color: var(--color-purple);
+  }
+
+[data-cat='groceries'] .badge, [data-cat='groceries'] .legend, [data-cat='groceries'] .bar-piece {
+    background-color: var(--color-deep-orange);
+  }
+
+[data-cat='gas'] .badge, [data-cat='gas'] .legend, [data-cat='gas'] .bar-piece {
+    background-color: var(--color-green);
+  }
+
+[data-cat='household'] .badge, [data-cat='household'] .legend, [data-cat='household'] .bar-piece {
+    background-color: var(--color-cyan);
+  }
+
+[data-cat='entertainment'] .badge, [data-cat='entertainment'] .legend, [data-cat='entertainment'] .bar-piece {
+    background-color: var(--color-light-green);
+  }
+
+[data-cat='health'] .badge, [data-cat='health'] .legend, [data-cat='health'] .bar-piece {
+    background-color: var(--color-red);
+  }
+
+[data-cat='transportation'] .badge, [data-cat='transportation'] .legend, [data-cat='transportation'] .bar-piece {
+    background-color: var(--color-amber);
+  }
+
+[data-cat='shopping'] .badge, [data-cat='shopping'] .legend, [data-cat='shopping'] .bar-piece {
+    background-color: var(--color-orange);
+  }
+
+[data-cat='misc'] .badge, [data-cat='misc'] .legend, [data-cat='misc'] .bar-piece {
+    background-color: var(--color-lime);
+  }
+
+[data-cat='donation'] .badge, [data-cat='donation'] .legend, [data-cat='donation'] .bar-piece {
+    background-color: var(--color-blue-gray);
+  }
+
+[data-cat='residence'] .badge, [data-cat='residence'] .legend, [data-cat='residence'] .bar-piece {
+    background-color: var(--color-light-blue-700);
+  }
+
+[data-cat='investment'] .badge, [data-cat='investment'] .legend, [data-cat='investment'] .bar-piece {
+    background-color: var(--color-teal);
+  }
+
+[data-cat='utilities'] .badge, [data-cat='utilities'] .legend, [data-cat='utilities'] .bar-piece {
+    background-color: var(--color-light-blue);
+  }
+
+[data-cat='mark'] .badge, [data-cat='mark'] .legend, [data-cat='mark'] .bar-piece {
+    background-color: var(--color-gray);
+  }
+
+[data-cat='travel'] .badge, [data-cat='travel'] .legend, [data-cat='travel'] .bar-piece {
+    background-color: var(--color-indigo);
+  }
+
+[data-cat='transfer'] .badge, [data-cat='transfer'] .legend, [data-cat='transfer'] .bar-piece {
+    background-color: var(--color-green-700);
+  }
+
+/* Hiding class, making content visible only to screen readers but not visually */
+/* "sr" meaning "screen-reader" */
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.form-group {
+  display: flex;
+  margin-bottom: 1rem;
+}

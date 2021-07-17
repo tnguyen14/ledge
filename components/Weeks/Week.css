@@ -1,0 +1,150 @@
+.weekly {
+  border-bottom: 1px solid var(--color-gray-300);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+  .weekly:last-of-type {
+    border-bottom: none;
+  }
+  .weekly .week-title {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  .weekly [data-field='action'] .edit,
+    .weekly [data-field='action'] .remove {
+      cursor: pointer;
+    }
+  .weekly [data-field='action'] .edit:hover, .weekly [data-field='action'] .remove:hover {
+        color: var(--color-light-blue);
+      }
+  .weekly [data-field='action'] .remove {
+      margin-left: 1em;
+    }
+  .weekly .weekly-transactions {
+    height: 100%;
+  }
+  /* prevent height from being stretched by flexbox */
+  @media (min-width: 68.75em) {
+  .weekly .weekly-transactions {
+      width: 65%
+  }
+    }
+  .weekly .weekly-transactions thead th {
+        border-bottom-width: 0;
+      }
+  @media (min-width: 42.5em) {
+  .weekly .weekly-transactions thead th {
+          border-bottom-width: 1px
+      }
+        }
+  .weekly .weekly-transactions thead .secondary {
+        display: none;
+      }
+  @media (min-width: 42.5em) {
+  .weekly .weekly-transactions thead .secondary {
+          display: table-cell
+      }
+        }
+  .weekly .weekly-transactions thead .addition .two-col {
+          flex-grow: 2;
+        }
+  @media (min-width: 42.5em) {
+  .weekly .weekly-transactions thead .addition {
+          display: none
+      }
+        }
+  .weekly .weekly-transactions tr {
+      display: flex;
+      flex-flow: row wrap;
+    }
+  @media (min-width: 42.5em) {
+  .weekly .weekly-transactions tr {
+        display: table-row
+    }
+      }
+  .weekly .weekly-transactions td,
+    .weekly .weekly-transactions th {
+      flex-basis: 25%;
+      padding: 0.5rem;
+      overflow: hidden;
+    }
+  @media (min-width: 42.5em) {
+  .weekly .weekly-transactions td,
+    .weekly .weekly-transactions th {
+        padding: 0.75rem
+    }
+      }
+  .weekly .weekly-transactions th {
+      font-size: 0.9rem;
+    }
+  .weekly .weekly-transactions [data-field='day'],
+    .weekly .weekly-transactions [data-field='amount'] {
+      flex-basis: 4.5rem;
+    }
+  @media (min-width: 42.5em) {
+  .weekly .weekly-transactions [data-field='day'],
+    .weekly .weekly-transactions [data-field='amount'] {
+        flex-basis: 25%
+    }
+      }
+  .weekly .weekly-transactions [data-field='merchant'],
+    .weekly .weekly-transactions [data-field='source'] {
+      flex-basis: calc((100% - 9rem) / 2);
+    }
+  @media (min-width: 42.5em) {
+  .weekly .weekly-transactions [data-field='merchant'],
+    .weekly .weekly-transactions [data-field='source'] {
+        flex-basis: 25%
+    }
+      }
+  .weekly .weekly-transactions [data-field='description'] {
+      flex-grow: 2;
+    }
+  .weekly .weekly-transactions [data-field='merchant'],
+    .weekly .weekly-transactions [data-field='source'] {
+      word-break: break-word;
+    }
+  .weekly .week-stats {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  @media (min-width: 68.75em) {
+  .weekly .week-stats {
+      width: 35%
+  }
+    }
+  .weekly .week-stats h6 {
+      margin: 1rem 0 0.75rem;
+    }
+  .weekly .week-stats h6 svg {
+        margin-left: 0.3rem;
+        margin-bottom: 0.2rem;
+      }
+  .weekly .week-stats .categories-stats {
+      margin-top: 0.75rem;
+    }
+  .weekly .week-stats .categories-stats td {
+        padding: 0.75rem;
+      }
+  .weekly .stat details {
+      margin-left: 0.5rem;
+      display: inline-block;
+      position: relative;
+    }
+  .weekly .stat details .category-transactions {
+        position: absolute;
+        z-index: 1;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 0.3rem;
+        padding: 1rem 0.75rem 1rem 2rem;
+        width: max-content;
+      }
+  .weekly .stat details .category-transactions td {
+          padding: 0.25rem;
+          max-width: 7rem;
+        }
+  .weekly .stat details .carried-over {
+        font-style: italic;
+      }

@@ -1,0 +1,60 @@
+.account-stats {
+  width: 100%;
+  margin-top: 1rem;
+}
+  @media (min-width: 68.75em) {.account-stats {
+    width: 50%;
+    margin-top: 2rem;
+    margin-bottom: 2rem
+}
+  }
+  .account-stats .tab-content {
+    margin-top: 1rem;
+  }
+  .account-stats .MuiTabs-indicator {
+    background: none;
+  }
+  .account-stats .Mui-selected {
+    background-color: var(--color-gray-300);
+  }
+  .account-stats [role='tab'] {
+    border-right: 2px solid var(--color-gray-300);
+    border-bottom: 2px solid var(--color-gray-300);
+  }
+  .account-stats [role='tab']:last-of-type {
+    border-right: none;
+  }
+@media (min-width: 68.75em) {
+.stats {
+    padding-left: 2rem
+}
+  }
+.stats .table {
+    width: 100%;
+  }
+@media (min-width: 42.5em) {
+.stats .table {
+      width: 50%
+  }
+    }
+@media (min-width: 68.75em) {
+.stats .table {
+      width: 100%
+  }
+    }
+
+.table .stat > td {
+    border-top: none;
+  }
+
+.stat .total {
+    font-weight: bold;
+  }
+
+.carousel-indicators li {
+  background-color: #000;
+}
+
+.carriedover-transactions {
+  padding: 0.5rem 0.75rem;
+}

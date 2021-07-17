@@ -1,0 +1,94 @@
+@import './Field.css';
+
+.new-transaction {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media (min-width: 68.75em) {
+
+.new-transaction {
+    width: 50%
+}
+  }
+
+.new-transaction h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+@media (min-width: 42.5em) {
+
+.new-transaction h2 {
+      font-size: 2rem
+  }
+    }
+
+.new-transaction fieldset {
+    margin-top: 1.3rem;
+  }
+
+.new-transaction [data-form-name='amount'],
+  .new-transaction [data-form-name='calculate'],
+  .new-transaction [data-form-name='date'],
+  .new-transaction [data-form-name='time'],
+  .new-transaction [data-form-name='span'],
+  .new-transaction [data-form-name='source'],
+  .new-transaction [data-form-name='merchant'],
+  .new-transaction [data-form-name='category'] {
+    width: 48%;
+  }
+
+.new-transaction [data-form-name='description'] {
+    width: 100%;
+  }
+
+.new-transaction [data-form-name='description'] textarea {
+      height: calc(
+        2.25rem + 2px
+      ); /* this is the height of form-control set by bootstrap */
+    }
+
+.new-transaction .actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+.new-transaction .actions [type='submit'] {
+      order: 1; /* move to the right */
+      text-transform: capitalize;
+    }
+
+.new-transaction .actions button + button {
+      margin-right: 0.7rem; /* create gap between buttons */
+    }
+
+.new-transaction .input-group {
+    width: 100%;
+  }
+
+@media (min-width: 42.5em) {
+
+.new-transaction .input-group {
+      width: calc(100% - 5.5em)
+  }
+    }
+
+@media (min-width: 68.75em) {
+
+.new-transaction .input-group {
+      width: calc(100% - 6em)
+  }
+    }
+
+.new-transaction .input-group .hint {
+      cursor: help;
+    }
+
+.new-transaction .react-hint__content {
+    font-size: 0.8rem;
+  }

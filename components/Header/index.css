@@ -1,0 +1,14 @@
+@import './UserMenu.css';
+
+.header {
+  background-color: var(--color-green);
+  width: 100%;
+}
+
+.header h1 {
+    color: var(--color-gray-100);
+    font-family: 'Shadows Into Light Two', cursive;
+    text-align: center;
+    margin: 0;
+    padding: 0.25em 0;
+  }
