@@ -1,0 +1,66 @@
+.chart {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  grid-template-areas:
+    '. chart-top'
+    'y-axis chart-body'
+    'spacer x-axis';
+  width: 100%;
+}
+  .chart .chart-top {
+    grid-area: chart-top;
+  }
+  .chart .nav {
+    justify-self: center;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  .chart .nav button {
+      border: 1px solid rgba(0, 0, 0, 0.2);
+    }
+  .chart .y-axis {
+    grid-area: y-axis;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    padding-right: 0.5rem;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .chart .y-axis .interval {
+      text-align: right;
+    }
+  .chart .y-axis .label {
+      font-size: 0.8em;
+      top: -0.75rem;
+      position: relative;
+    }
+  .chart .x-axis {
+    grid-area: x-axis;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  .chart .chart-body {
+    grid-area: chart-body;
+    align-self: end;
+  }
+  .chart .chart-body .chart-column {
+      cursor: pointer;
+    }
+  .chart .chart-body .chart-column.has-popup-open,
+      .chart .chart-body .chart-column:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+  .chart .grid-lines {
+    grid-area: chart-body;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .chart .grid-lines .interval {
+      border-top: 1px dotted rgba(0, 0, 0, 0.2);
+    }
+  .chart .spacer {
+    grid-area: spacer;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    padding-top: 0.5rem;
+  }

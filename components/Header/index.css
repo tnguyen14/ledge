@@ -1,0 +1,28 @@
+@import './UserMenu.css';
+
+.header {
+  background-color: var(--color-green);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header h1 {
+    color: var(--color-grey-lighten-4);
+    font-family: 'Shadows Into Light Two', cursive;
+    margin: 0 0 0 5%;
+    padding: 0.625rem 0;
+  }
+
+.header .user {
+    margin: 0 5% 0 0;
+    padding: 0.625rem 0;
+  }
+
+.header .display-from {
+    margin: 0;
+  }

@@ -1,0 +1,25 @@
+.categories-chart .weeks-columns,
+  .categories-chart .weeks-labels {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding-left: 0.25rem;
+  }
+    @media (min-width: 42.5em) {.categories-chart .weeks-columns,
+  .categories-chart .weeks-labels {
+      padding-left: 0.5rem
+  }
+    }
+  .categories-chart .week-column,
+  .categories-chart .week-label {
+    width: 1.5rem;
+  }
+  @media (min-width: 42.5em) {
+  .categories-chart .week-column,
+  .categories-chart .week-label {
+      width: 2.5rem
+  }
+    }
+  .categories-chart .week-label {
+    font-size: 0.8em;
+  }
