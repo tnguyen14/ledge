@@ -1,0 +1,73 @@
+@import './CategoriesChart.css';
+@import './CategoryBar.css';
+@import './CashflowChart.css';
+@import './CashflowBar.css';
+@import './Budget.css';
+
+.global-stats .tabs-selector {
+    /* prevent the tabs component from
+     * blowing up the site's width */
+    max-width: 100dvw;
+  }
+
+.global-stats .tab-content {
+    margin-top: 1rem;
+  }
+
+.global-stats .MuiTabs-indicator {
+    background: none;
+  }
+
+.global-stats .Mui-selected {
+    background-color: var(--color-grey-lighten-2);
+  }
+
+.global-stats [role='tab'] {
+    border-right: 2px solid var(--color-grey-lighten-2);
+    border-bottom: 2px solid var(--color-grey-lighten-2);
+  }
+
+.global-stats [role='tab']:last-of-type {
+    border-right: none;
+  }
+.stats .table {
+    width: 100%;
+  }
+@media (min-width: 42.5em) {
+.stats .table {
+      width: 50%
+  }
+    }
+@media (min-width: 68.75em) {
+.stats .table {
+      width: 100%
+  }
+    }
+
+.table .stat > td {
+    border-top: none;
+  }
+
+.stat .total {
+    font-weight: bold;
+  }
+
+.carousel-indicators li {
+  background-color: #000;
+}
+
+.carriedover-transactions {
+  padding: 0.5rem 0.75rem;
+}
+
+.stat-popover {
+  padding: 1rem;
+}
+
+.explanation {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  column-gap: 2rem;
+  row-gap: 1rem;
+}

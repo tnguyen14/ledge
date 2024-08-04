@@ -1,0 +1,78 @@
+.weekly {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-grey-lighten-2);
+}
+  .weekly:last-of-type {
+    border-bottom: none;
+  }
+.week-title {
+  grid-area: title;
+}
+.weekly-transactions {
+  margin: 0;
+}
+.weekly-transactions tr {
+    display: flex;
+    flex-flow: row wrap;
+  }
+@media (min-width: 42.5em) {
+.weekly-transactions tr {
+      display: table-row
+  }
+    }
+.weekly-transactions td,
+  .weekly-transactions th {
+    width: 25%;
+    padding: 0.5rem;
+  }
+/* overflow: hidden;  -- not sure why this is needed */
+@media (min-width: 42.5em) {
+.weekly-transactions td,
+  .weekly-transactions th {
+      padding: 0.75rem
+  }
+    }
+.week-secondary {
+  grid-area: secondary;
+  margin-bottom: 1rem;
+}
+.week-stats {
+  margin-bottom: 1rem;
+}
+.week-stats h6 {
+    margin: 1rem 0 0.75rem;
+  }
+.week-stats h6 svg {
+      margin-left: 0.3rem;
+      margin-bottom: 0.2rem;
+    }
+.week-stats .categories-stats {
+    margin-top: 0.75rem;
+  }
+.week-stats .categories-stats td {
+      padding: 0.75rem;
+    }
+.week-stats .stat .stat-label {
+      position: relative;
+    }
+.week-stats .stat details {
+      margin-left: 0.5rem;
+      display: inline-block;
+    }
+.week-stats .stat details .category-transactions {
+        position: absolute;
+        left: 2rem;
+        margin-top: 0.5rem;
+        z-index: 1;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        padding: 1rem 0.75rem 1rem 2rem;
+        width: max-content;
+      }
+.week-stats .stat details .category-transactions td {
+          padding: 0.25rem;
+        }
+.week-stats .stat details .carried-over {
+        font-style: italic;
+      }

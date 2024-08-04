@@ -1,0 +1,60 @@
+.transaction {
+  clear: left;
+  cursor: pointer;
+}
+  @media (min-width: 42.5em) {.transaction {
+    cursor: default
+}
+  }
+  .transaction [data-field='day'] {
+    width: 3.5rem;
+  }
+  .transaction [data-field='action'] {
+    width: 4rem;
+  }
+  .transaction [data-field='merchant'] {
+    width: calc(100% - 10px - 3.5rem - 6.5rem - 4rem - 10px);
+    word-break: break-word;
+  }
+  .transaction [data-field='amount'] {
+    color: white;
+    width: 6.5rem;
+  }
+  .transaction [data-field='amount'] .span-hint {
+      margin-right: 0;
+    }
+  @media (min-width: 42.5em) {
+  .transaction [data-field='amount'] {
+      width: 8rem
+  }
+    }
+  .transaction [data-field='credit-account'],
+  .transaction [data-field='debit-account'] {
+    background-color: var(--color-blue-grey-lighten-4);
+    width: 10px;
+    cursor: pointer;
+    padding: 0;
+  }
+  .transaction [data-field='credit-account'][data-account-name='expense'], .transaction [data-field='debit-account'][data-account-name='expense'] {
+      background-color: var(--color-red-lighten-3);
+    }
+  .transaction [data-field='credit-account'][data-account-name='income'], .transaction [data-field='debit-account'][data-account-name='income'] {
+      background-color: var(--color-light-green-accent-4);
+    }
+  .transaction [data-field='credit-account'][data-account-name='schwab'], .transaction [data-field='debit-account'][data-account-name='schwab'] {
+      background-color: var(--color-cyan);
+    }
+  .transaction [data-field='credit-account'][data-account-name='travel'], .transaction [data-field='debit-account'][data-account-name='travel'] {
+      background-color: var(--color-blue);
+    }
+.credit-account-popover h4, .debit-account-popover h4, .amount-popover h4 {
+    font-size: 0.9em;
+    margin-bottom: 0;
+  }
+.actions-popover div {
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+.actions-popover div:hover {
+      background-color: var(--color-grey-lighten-4);
+    }

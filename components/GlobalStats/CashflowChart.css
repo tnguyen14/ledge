@@ -1,0 +1,49 @@
+.cashflow-chart .months-graph,
+  .cashflow-chart .months-labels {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding-left: 0.25rem;
+  }
+    @media (min-width: 42.5em) {.cashflow-chart .months-graph,
+  .cashflow-chart .months-labels {
+      padding-left: 0.5rem
+  }
+    }
+  .cashflow-chart .cashflow-column {
+    display: grid;
+    grid-template-areas: 'main';
+    align-items: end;
+  }
+  .cashflow-chart .debit-column {
+    grid-area: main;
+  }
+  .cashflow-chart .credit-column {
+    grid-area: main;
+    width: 1rem;
+    margin: 0 auto;
+  }
+  /* center the bar */
+  @media (min-width: 42.5em) {
+  .cashflow-chart .credit-column {
+      width: 1.5rem
+  }
+    }
+  .cashflow-chart .debit-column,
+  .cashflow-chart .credit-column {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .cashflow-chart .debit-column,
+  .cashflow-chart .month-label {
+    width: 1.5rem;
+  }
+  @media (min-width: 42.5em) {
+  .cashflow-chart .debit-column,
+  .cashflow-chart .month-label {
+      width: 2.5rem
+  }
+    }
+  .cashflow-chart .month-label {
+    font-size: 0.8em;
+  }

@@ -1,0 +1,67 @@
+.auth-loading {
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 2em;
+}
+
+.app-error {
+  text-align: center;
+  padding: 1rem;
+}
+
+.app-top {
+  background-color: var(--color-grey-lighten-4);
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-areas:
+    'form'
+    'stats';
+  row-gap: 1rem;
+}
+
+@media (min-width: 68.75em) {
+
+.app-top {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+    grid-template-areas: 'form stats'
+}
+  }
+
+.app-top .new-transaction {
+    grid-area: form;
+    margin: 0.5rem 2.5%;
+  }
+
+@media (min-width: 42.5em) {
+
+.app-top .new-transaction {
+      margin-left: 5%;
+      margin-right: 5%
+  }
+    }
+
+.app-top .global-stats {
+    grid-area: stats;
+    margin: 0.5rem 2.5%;
+  }
+
+@media (min-width: 42.5em) {
+
+.app-top .global-stats {
+      margin-left: 5%;
+      margin-right: 5%
+  }
+    }
+
+.app-bottom {
+  width: 95%;
+  margin: 0 auto 2em;
+}
+
+@media (min-width: 42.5em) {
+
+.app-bottom {
+    width: 90%
+}
+  }

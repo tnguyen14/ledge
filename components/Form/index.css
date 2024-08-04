@@ -1,0 +1,56 @@
+@import './Field.css';
+
+.new-transaction {
+  display: grid;
+  justify-content: space-between;
+  align-content: baseline;
+  grid-template-columns: 48% 48%;
+  row-gap: 1rem;
+}
+
+.new-transaction [data-form-name='memo'] textarea {
+      height: calc(
+        2.25rem + 2px
+      ); /* this is the height of form-control set by bootstrap */
+    }
+
+.new-transaction .actions {
+    grid-column: 2;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+.new-transaction .actions [type='submit'] {
+      order: 1; /* move to the right */
+      text-transform: capitalize;
+    }
+
+.new-transaction .actions button + button {
+      margin-right: 0.7rem; /* create gap between buttons */
+    }
+
+.new-transaction .input-group {
+    width: 100%;
+  }
+
+@media (min-width: 42.5em) {
+
+.new-transaction .input-group {
+      width: calc(100% - 5.5em)
+  }
+    }
+
+@media (min-width: 68.75em) {
+
+.new-transaction .input-group {
+      width: calc(100% - 6em)
+  }
+    }
+
+.new-transaction .input-group .hint {
+      cursor: help;
+    }
+
+.new-transaction .react-hint__content {
+    font-size: 0.8rem;
+  }
