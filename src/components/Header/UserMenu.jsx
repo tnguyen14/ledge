@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'https://esm.sh/classnames@2';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -9,6 +9,26 @@ function UserMenu() {
   const { isAuthenticated, user, logout } = useAuth0();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.app.token);
+  const menuRef = useRef(null);
+
+  // Close menu if clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setProfileActive(false);
+      }
+    }
+
+    // Add event listener when menu is open
+    if (profileActive) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    // Clean up the event listener
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [profileActive]);
 
   if (!isAuthenticated) {
     return null;
@@ -22,6 +42,7 @@ function UserMenu() {
   }
   return (
     <div
+      ref={menuRef}
       className={classnames('user', {
         'profile-active': profileActive
       })}
