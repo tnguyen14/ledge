@@ -106,60 +106,64 @@ function Recurring() {
           {active.map((txn) => (
             <div className="item" key={txn.id}>
               <RecurringTransaction {...txn} />
-              <Button
-                size="sm"
-                variant="outline-info"
-                title="Edit"
-                onClick={() => {
-                  dispatch(
-                    editTransaction({
-                      ...txn,
-                      syntheticType: 'recurring'
-                    })
-                  );
-                  closeDialog();
-                }}
-              >
-                <PencilIcon />
-              </Button>
-              <Button
-                size="sm"
-                variant="outline-danger"
-                title="Remove"
-                onClick={() => {
-                  dispatch(
-                    intendToRemoveTransaction({
-                      ...txn,
-                      syntheticType: 'recurring'
-                    })
-                  );
-                  closeDialog();
-                }}
-              >
-                <TrashIcon />
-              </Button>
+              <div className="buttons">
+                <Button
+                  size="sm"
+                  variant="outline-info"
+                  title="Edit"
+                  onClick={() => {
+                    dispatch(
+                      editTransaction({
+                        ...txn,
+                        syntheticType: 'recurring'
+                      })
+                    );
+                    closeDialog();
+                  }}
+                >
+                  <PencilIcon />
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline-danger"
+                  title="Remove"
+                  onClick={() => {
+                    dispatch(
+                      intendToRemoveTransaction({
+                        ...txn,
+                        syntheticType: 'recurring'
+                      })
+                    );
+                    closeDialog();
+                  }}
+                >
+                  <TrashIcon />
+                </Button>
+              </div>
             </div>
           ))}
           <h4>Expired</h4>
           {expired.map((txn) => (
             <div className="item" key={txn.id}>
               <RecurringTransaction {...txn} />
-              <Button
-                size="sm"
-                variant="outline-danger"
-                title="Remove"
-                onClick={() => {
-                  dispatch(
-                    intendToRemoveTransaction({
-                      ...txn,
-                      syntheticType: 'recurring'
-                    })
-                  );
-                  closeDialog();
-                }}
-              >
-                <TrashIcon />
-              </Button>
+              <div className="buttons">
+                <Button
+                  size="sm"
+                  variant="outline-danger"
+                  title="Remove"
+                  onClick={() => {
+                    dispatch(
+                      intendToRemoveTransaction({
+                        ...txn,
+                        syntheticType: 'recurring'
+                      })
+                    );
+                    closeDialog();
+                  }}
+                >
+                  <TrashIcon />
+                </Button>
+              </div>
             </div>
           ))}
         </div>

@@ -11,6 +11,11 @@
   gap: 0.3rem;
 }
 
+.recurring .item .buttons {
+  display: flex;
+  gap: 0.3rem;
+}
+
 .recurring .item:hover {
   background-color: var(--color-grey-lighten-4);
 }
