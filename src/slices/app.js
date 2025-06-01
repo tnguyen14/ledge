@@ -27,6 +27,7 @@ const initialState = {
   loadedTransactions: false,
   showCashflow: false,
   isUserSettingsOpen: false,
+  isRecurringOpen: false,
   error: null,
   searchParams: {},
   savingUserSettings: false,
@@ -70,6 +71,9 @@ const app = createSlice({
     },
     setUserSettingsOpen: (state, action) => {
       state.isUserSettingsOpen = action.payload;
+    },
+    setRecurringOpen: (state, action) => {
+      state.isRecurringOpen = action.payload;
     },
     setAppError: (state, action) => {
       state.error = action.payload;
@@ -127,6 +131,7 @@ export const {
   intendToRemoveTransaction,
   cancelRemoveTransaction,
   setUserSettingsOpen,
+  setRecurringOpen,
   setAppError,
   editTransaction
 } = app.actions;

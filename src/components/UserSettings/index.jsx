@@ -27,7 +27,6 @@ import {
 import { setUserSettingsOpen } from '../../slices/app.js';
 import { patchMeta } from '../../util/api.js';
 import Field from '../Form/Field.jsx';
-import Recurring from './Recurring.jsx';
 
 function UserSettings() {
   const [newAccount, setNewAccount] = useState('');
@@ -71,7 +70,7 @@ function UserSettings() {
 
   return (
     <Dialog
-      className="user-settings"
+      className="user-settings popup-dialog"
       open={open}
       onClose={() => dispatch(setUserSettingsOpen(false))}
     >
@@ -232,7 +231,6 @@ function UserSettings() {
             </div>
           </div>
         </div>
-        <Recurring />
       </DialogContent>
       <DialogActions>
         <Button

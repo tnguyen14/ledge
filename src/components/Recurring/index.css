@@ -1,0 +1,16 @@
+.recurring {
+  padding: 1rem 0;
+}
+
+.recurring .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+  padding: 0.3rem;
+  gap: 0.3rem;
+}
+
+.recurring .item:hover {
+  background-color: var(--color-grey-lighten-4);
+}

@@ -20,7 +20,7 @@ import { TIMEZONE } from '../../util/constants.js';
 import Transaction from './Transaction.jsx';
 import WeekStats from './WeekStats.jsx';
 import { getRecurringTransactions } from '../../selectors/meta.js';
-import { RecurringTransaction } from '../UserSettings/Recurring.jsx';
+import { RecurringTransaction } from '../Recurring/index.jsx';
 
 function Week(props) {
   const dispatch = useDispatch();

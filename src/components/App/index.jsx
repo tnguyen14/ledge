@@ -15,6 +15,7 @@ import Form from '../Form/index.jsx';
 import GlobalStats from '../GlobalStats/index.jsx';
 import Transactions from '../Transactions/index.jsx';
 import UserSettings from '../UserSettings/index.jsx';
+import Recurring from '../Recurring/index.jsx';
 import {
   refreshApp,
   setAppError,
@@ -168,6 +169,7 @@ function App() {
             </div>
             <Notification />
             <UserSettings />
+            <Recurring />
           </BudgetContext.Provider>
         </OctokitContext.Provider>
       )}

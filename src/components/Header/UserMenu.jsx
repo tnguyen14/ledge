@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'https://esm.sh/classnames@2';
 import { useAuth0 } from '@auth0/auth0-react';
-import { setUserSettingsOpen } from '../../slices/app.js';
+import { setUserSettingsOpen, setRecurringOpen } from '../../slices/app.js';
 
 function UserMenu() {
   const [profileActive, setProfileActive] = useState(false);
@@ -34,6 +34,14 @@ function UserMenu() {
       />
       <ul className="profile">
         <li>{user.name}</li>
+        <li
+          className="recurring"
+          onClick={() => {
+            dispatch(setRecurringOpen(true));
+          }}
+        >
+          Recurring
+        </li>
         <li
           className="settings"
           onClick={() => dispatch(setUserSettingsOpen(true))}

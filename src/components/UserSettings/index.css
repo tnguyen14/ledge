@@ -1,26 +1,21 @@
 .user-settings {
-  [role='dialog'] {
-    max-width: 70vw;
-  }
   .MuiDialogContent-root {
     display: grid;
     gap: 1rem;
     grid-template-areas:
       'profile'
       'accounts'
-      'categories'
-      'recurring';
+      'categories';
     @media (min-width: 42.5em) {
       grid-template-areas:
         'profile accounts'
-        'categories categories'
-        'recurring recurring';
+        'categories categories';
       grid-template-rows: auto 1fr;
     }
     @media (min-width: 68.75em) {
       grid-template-areas:
-        'profile accounts recurring'
-        'categories categories recurring';
+        'profile accounts'
+        'categories categories';
     }
   }
   .profile {
@@ -39,9 +34,6 @@
   }
   .list.categories {
     grid-area: categories;
-  }
-  .recurring {
-    grid-area: recurring;
   }
   .item {
     display: flex;

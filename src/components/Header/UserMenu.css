@@ -29,7 +29,8 @@
   li {
     padding: 1rem;
   }
-  .settings {
+  .settings,
+  .recurring {
     cursor: pointer;
   }
   .jwt-token {

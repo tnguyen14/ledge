@@ -47,3 +47,9 @@
     width: 90%;
   }
 }
+
+.popup-dialog {
+  [role='dialog'] {
+    max-width: 70vw;
+  }
+}
