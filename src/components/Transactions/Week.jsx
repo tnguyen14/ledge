@@ -162,10 +162,10 @@ function Week(props) {
       </div>
       <div className="week-secondary">
         <WeekStats weekId={weekId} label="Regular Expenses" />
-        <div>
+        <div className="applicable-recurring">
           <h4>Applicable Recurring</h4>
           {effectiveRecurring.map((txn) => (
-            <div key={txn.id}>
+            <div className="recurring-item" key={txn.id}>
               <RecurringTransaction {...txn} />
             </div>
           ))}
