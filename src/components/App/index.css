@@ -52,4 +52,8 @@
   [role='dialog'] {
     max-width: 70vw;
   }
+  h4 {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
 }
