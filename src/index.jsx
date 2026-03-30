@@ -8,8 +8,11 @@ import {
   AUTH0_DOMAIN,
   API_AUDIENCE,
   LISTS_SCOPE,
+  LISTS_URL,
   PROFILE_SCOPE
 } from './util/constants.js';
+
+console.log(`API endpoint: ${LISTS_URL}`);
 
 const root = createRoot(document.querySelector('.main'));
 root.render(
