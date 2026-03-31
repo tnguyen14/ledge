@@ -1,6 +1,6 @@
 /* global process */
 export const TIMEZONE = 'America/New_York';
-export const LISTS_URL = import.meta.env.VITE_LISTS_URL;
+export const LISTS_URL = import.meta.env?.VITE_LISTS_URL;
 export const LEDGE_URL = `${LISTS_URL}/ledge`;
 export const USERMETA_URL = `${LISTS_URL}/meta/users`;
 export const AUTH0_DOMAIN = 'tridnguyen.auth0.com';

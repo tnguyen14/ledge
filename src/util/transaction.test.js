@@ -8,7 +8,9 @@ describe('decorateTransaction', () => {
         date: '2021-05-08',
         time: '22:17',
         amount: 104.56,
-        syntheticType: 'expense'
+        syntheticType: 'expense',
+        creditAccount: 'cash',
+        debitAccount: 'expense'
       })
     ).to.deep.equal({
       date: new Date('2021-05-08 22:17').toISOString(),
