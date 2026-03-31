@@ -27,7 +27,8 @@ export const getCategoriesTotals = createSelector(
             })
           ),
           label: cat.value,
-          slug: cat.slug
+          slug: cat.slug,
+          color: cat.color
         };
       })
       .filter((stat) => stat.amount > 0)

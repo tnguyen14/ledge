@@ -19,10 +19,12 @@ import {
   addCategory,
   removeCategory,
   cancelRemoveCategory,
+  setCategoryColor,
   moveCategoryToIndex,
   updateUserSettings,
   updateUserSettingsSuccess,
-  updateUserSettingsFailure
+  updateUserSettingsFailure,
+  COLOR_PALETTE
 } from '../../slices/meta.js';
 import { setUserSettingsOpen } from '../../slices/app.js';
 import { patchMeta } from '../../util/api.js';
@@ -31,6 +33,7 @@ import Field from '../Form/Field.jsx';
 function UserSettings() {
   const [newAccount, setNewAccount] = useState('');
   const [newCategory, setNewCategory] = useState('');
+  const [openColorPicker, setOpenColorPicker] = useState(null);
   const dispatch = useDispatch();
   const open = useSelector((state) => state.app.isUserSettingsOpen);
   const saving = useSelector((state) => state.app.savingUserSettings);
@@ -49,7 +52,8 @@ function UserSettings() {
       .filter((cat) => !cat.toBeRemoved)
       .map((cat) => ({
         slug: cat.slug,
-        value: cat.value
+        value: cat.value,
+        color: cat.color
       }));
     dispatch(updateUserSettings());
     try {
@@ -155,6 +159,44 @@ function UserSettings() {
               >
                 <span>{cat.value}</span>
                 <div className="item-actions">
+                  <div className="color-swatch-picker">
+                    <Button
+                      size="sm"
+                      variant="outline-secondary"
+                      title="Change color"
+                      onClick={() =>
+                        setOpenColorPicker(
+                          openColorPicker === cat.slug ? null : cat.slug
+                        )
+                      }
+                    >
+                      <span
+                        className="current-swatch"
+                        style={{ backgroundColor: `var(--color-${cat.color})` }}
+                      />
+                    </Button>
+                    {openColorPicker === cat.slug && (
+                      <div className="color-swatches">
+                        {Object.keys(COLOR_PALETTE).map((name) => (
+                          <button
+                            key={name}
+                            className="swatch"
+                            style={{ backgroundColor: `var(--color-${name})` }}
+                            title={name}
+                            onClick={() => {
+                              dispatch(
+                                setCategoryColor({
+                                  slug: cat.slug,
+                                  color: name
+                                })
+                              );
+                              setOpenColorPicker(null);
+                            }}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
                   <Button
                     size="sm"
                     variant="outline-secondary"

@@ -40,8 +40,7 @@ function CategoryBar(props) {
                   style={{
                     height: `calc(${
                       categoriesTotals[cat.slug].amount / 100
-                    } * var(--px-per-unit-height)
-                  )`
+                    } * var(--px-per-unit-height))`
                   }}
                 ></div>
               </div>

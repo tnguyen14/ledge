@@ -46,6 +46,41 @@
       background-color: var(--color-grey-lighten-4);
     }
   }
+  .color-swatch-picker {
+    position: relative;
+    flex-shrink: 0;
+    .current-swatch {
+      display: block;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 3px;
+      border: 1px solid var(--color-grey-lighten-2);
+    }
+    .color-swatches {
+      position: absolute;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: repeat(6, 1.5rem);
+      gap: 2px;
+      padding: 0.4rem;
+      background: white;
+      border: 1px solid var(--color-grey-lighten-2);
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    .swatch {
+      width: 1.5rem;
+      height: 1.5rem;
+      border: 1px solid var(--color-grey-lighten-2);
+      border-radius: 2px;
+      cursor: pointer;
+      padding: 0;
+      &:hover {
+        outline: 2px solid var(--color-blue-grey-darken-4);
+        outline-offset: 1px;
+      }
+    }
+  }
   .item-actions {
     display: flex;
     column-gap: 0.2em;

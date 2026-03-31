@@ -7,6 +7,7 @@ import format from 'date-fns/format';
 import { Octokit } from 'octokit';
 import Button from 'react-bootstrap/Button';
 
+import CategoryColors from '../CategoryColors.jsx';
 import Header from '../Header/index.jsx';
 import Login from '../Login/index.jsx';
 import Notification from '../Notification/index.jsx';
@@ -130,6 +131,7 @@ function App() {
 
   return (
     <div className="app">
+      <CategoryColors />
       <Header />
       {!isAuthenticated &&
         (isLoading ? <h2 className="auth-loading">Loading...</h2> : <Login />)}
