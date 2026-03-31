@@ -46,6 +46,7 @@ jobs:
 
   deploy-dev:
     name: Deploy to Cloudflare Pages - Dev
+    needs: [unit-test-ny, unit-test]
     if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[skip-ci]')
     runs-on: ubuntu-latest
 
@@ -70,6 +71,7 @@ jobs:
 
   deploy-prod:
     name: Deploy to Cloudflare Pages - Prod
+    needs: [unit-test-ny, unit-test]
     if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[skip-ci]')
     runs-on: ubuntu-latest
 
