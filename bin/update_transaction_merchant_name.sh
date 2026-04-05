@@ -25,7 +25,7 @@ txns=$(curl -s -G \
   --data-urlencode "where[0][value]=$SEARCH_NAME")
 
 count=$(echo "$txns" | jq 'length')
-echo "Found $count transaction(s) with merchant=\"$SEARCH_NAME\":"
+echo "Found $count transaction(s) with merchant value: \"$SEARCH_NAME\""
 echo "$txns" | jq '[.[] | {id, date, amount, merchant}]'
 
 first_id=$(echo "$txns" | jq -r '.[0].id')
@@ -37,12 +37,15 @@ fi
 
 updated_transaction=$(jq -n --arg name "$NEW_NAME" '{"merchant": $name}')
 
-echo "Patching $first_id: \"$updated_transaction\""
+echo "Patching first transaction $first_id"
+echo "$updated_transaction"
 curl -s -X PATCH \
   -H "Authorization: Bearer ${JWT_TOKEN}" \
   -H "Content-Type: application/json" \
   -d "$updated_transaction" \
   "${API_URL}/ledge/tri/items/${first_id}"
+
+echo
 
 # If this was the last transaction with the stale name, merchants_count needs updating too
 if [ "$count" -eq 1 ]; then

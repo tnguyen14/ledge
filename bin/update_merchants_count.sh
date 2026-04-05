@@ -53,11 +53,13 @@ else
   exit 1
 fi
 
-echo "Patching merchants_count:"
-echo "$patch" | jq '.merchants_count'
+echo "Patching merchants_count for slug $SLUG"
+echo "$patch" | jq '.'
 
 curl -s -X PATCH \
   -H "Authorization: Bearer ${JWT_TOKEN}" \
   -H "Content-Type: application/json" \
   -d "$patch" \
   "${API_URL}/ledge/tri/meta"
+
+echo

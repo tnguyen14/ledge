@@ -19,5 +19,5 @@ variants=$(echo "$meta" | jq '
 ')
 
 echo "$variants" | jq
-echo "To fix, run:"
+echo "Update merchant name of a transaction:"
 echo "  ./bin/update_transaction_merchant_name.sh \"<stale-name>\" \"<correct-name>\""
