@@ -36,6 +36,7 @@ function UserSettings() {
   const [newAccount, setNewAccount] = useState('');
   const [newCategory, setNewCategory] = useState('');
   const [openColorPicker, setOpenColorPicker] = useState(null);
+  const [hoveredColor, setHoveredColor] = useState(null);
   const dispatch = useDispatch();
   const open = useSelector((state) => state.app.isUserSettingsOpen);
   const saving = useSelector((state) => state.app.savingUserSettings);
@@ -183,6 +184,9 @@ function UserSettings() {
                     </Button>
                     {openColorPicker === cat.slug && (
                       <div className="color-swatches">
+                        <span className="color-name-preview">
+                          {hoveredColor ?? cat.color}
+                        </span>
                         {colorOptions.map((name) => (
                           <button
                             key={name}
@@ -192,6 +196,8 @@ function UserSettings() {
                             })}
                             style={{ backgroundColor: `var(--color-${name})` }}
                             title={name}
+                            onMouseEnter={() => setHoveredColor(name)}
+                            onMouseLeave={() => setHoveredColor(null)}
                             onClick={() => {
                               dispatch(
                                 setCategoryColor({
