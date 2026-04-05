@@ -26,6 +26,8 @@ import {
   updateUserSettingsFailure,
   COLOR_PALETTE
 } from '../../slices/meta.js';
+
+const colorOptions = Object.keys(COLOR_PALETTE);
 import { setUserSettingsOpen } from '../../slices/app.js';
 import { patchMeta } from '../../util/api.js';
 import Field from '../Form/Field.jsx';
@@ -181,7 +183,7 @@ function UserSettings() {
                     </Button>
                     {openColorPicker === cat.slug && (
                       <div className="color-swatches">
-                        {Object.keys(COLOR_PALETTE).map((name) => (
+                        {colorOptions.map((name) => (
                           <button
                             key={name}
                             className={classnames('swatch', {

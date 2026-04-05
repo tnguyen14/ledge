@@ -1,6 +1,5 @@
 - color picker for category colors should have text value
-  - mark colors that have been used, to avoid re-use
-  - review color-swatch-picker rules in UserSettings/index.css
 - how to retroactively update all old transactions?
   - make gas -> transportation
 - old transactions (like in 2019) does not have the type attribute - resulting in error in calculating average
+- resolve console errors

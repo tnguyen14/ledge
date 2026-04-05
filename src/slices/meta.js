@@ -284,12 +284,12 @@ const meta = createSlice({
       });
     },
     setCategoryColor: (state, action) => {
-      state.expenseCategories = state.expenseCategories.map((cat) => {
-        if (cat.slug === action.payload.slug) {
-          return { ...cat, color: action.payload.color };
-        }
-        return cat;
-      });
+      const cat = state.expenseCategories.find(
+        (c) => c.slug === action.payload.slug
+      );
+      if (cat) {
+        cat.color = action.payload.color;
+      }
     },
     moveCategoryToIndex: (state, action) => {
       const newCategories = [...state.expenseCategories];
