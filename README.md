@@ -15,6 +15,14 @@ gh cs ports forward 13050:13050 4003:4003
 gh cs ssh
 ```
 
+#### Authenticating with API server
+
+Log into the app, and copy the JWT token. Set it with
+
+```sh
+export JWT_TOKEN=<>
+```
+
 ### Transaction lookup
 
 To find a transaction locally by merchant
@@ -24,9 +32,17 @@ export env=dev # or env=prod
 ./bin/find_transactions.js -m "merchant name"
 ```
 
-To fix duplicate transactions
+### Bad merchant data problems
 
-- Verify what the slug for the merchant should be at <https://npm.runkit.com/%40tridnguyen%2Fslugify>.
-- Go to the Firestore console, find the merchant with duplicate values under `merchants_counts`.
-- Add the count of the old (duplicated) merchant to the correct one, then remove the old merchant.
-- If the merchant pretty name needs to be updated on transactions, find the transaction (on Firestore console?) and update it accordingly.
+#### Merchant with variant names
+
+```sh
+# find them with
+./bin/find_merchant_name_variants.sh
+```
+
+#### Same merchant, multiple slugs
+
+```sh
+./bin/find_duplicate_merchant_slugs.sh
+```

@@ -30,6 +30,7 @@
   "homepage": "https://github.com/tnguyen14/ledge",
   "devDependencies": {
     "@tridnguyen/auth": "^7.0.1",
+    "@tridnguyen/slugify": "^2.1.0",
     "@vitejs/plugin-react": "^4.3.1",
     "commander": "^11.1.0",
     "dotenv": "^16.3.1",
