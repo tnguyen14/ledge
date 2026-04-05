@@ -6,7 +6,11 @@ import simpleFetch from 'simple-fetch';
 import { stringify } from 'qs';
 import { getToken } from '@tridnguyen/auth/server.js';
 
-program.option('-m, --merchant <merchant>').option('-d, --debug');
+program
+  .option('-m, --merchant <merchant>')
+  .option('--id <id>')
+  .option('--date <date>', 'date in MM-DD-YYYY format')
+  .option('-d, --debug');
 program.parse();
 
 const options = program.opts();
@@ -26,38 +30,67 @@ const LISTS_URLS = {
 
 const env = process.env.env;
 
-// TODO: It's ok to search for transactions without merchant
-if (!options.merchant) {
-  throw new Error("Missing option for 'merchant'");
+if (!options.merchant && !options.id && !options.date) {
+  throw new Error("Missing option: provide '--merchant', '--id', or '--date'");
 }
 
-console.log(`Searching for transactions with merchant ${options.merchant}`);
-
-const query = stringify({
-  where: [
-    {
-      field: 'merchant',
-      op: '==',
-      value: options.merchant
+if (options.id) {
+  console.log(`Searching for transaction with id ${options.id}`);
+  getJson(`${LISTS_URLS[env]}/ledge/tri/items/${options.id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
     }
+  }).then(
+    (data) => {
+      console.log(data);
+    },
+    (err) => {
+      console.error('Something went wrong');
+      console.error(err);
+    }
+  );
+} else {
+  const where = [];
+
+  if (options.merchant) {
+    where.push({ field: 'merchant', op: '==', value: options.merchant });
+  }
+
+  if (options.date) {
+    const [month, day, year] = options.date.split('-');
+    const start = new Date(year, month - 1, day);
+    const end = new Date(year, month - 1, day);
+    end.setDate(end.getDate() + 1);
+    where.push({ field: 'date', op: '>=', value: start.toISOString() });
+    where.push({ field: 'date', op: '<', value: end.toISOString() });
+  }
+
+  const label = [
+    options.merchant && `merchant ${options.merchant}`,
+    options.date && `date ${options.date}`
   ]
-});
+    .filter(Boolean)
+    .join(' and ');
+  console.log(`Searching for transactions with ${label}`);
 
-if (options.debug) {
-  console.log(`Query: ${query}`);
+  const query = stringify({ where });
+
+  if (options.debug) {
+    console.log(`Query: ${query}`);
+  }
+
+  getJson(`${LISTS_URLS[env]}/ledge/tri/items?${query}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }).then(
+    (data) => {
+      console.log(`Found ${data.length} transactions`);
+      console.log(data);
+    },
+    (err) => {
+      console.error('Something went wrong');
+      console.error(err);
+    }
+  );
 }
-
-getJson(`${LISTS_URLS[env]}/ledge/tri/items?${query}`, {
-  headers: {
-    Authorization: `Bearer ${token}`
-  }
-}).then(
-  (data) => {
-    console.log(`Found ${data.length} transactions`);
-    console.log(data);
-  },
-  (err) => {
-    console.error('Something went wrong');
-    console.error(err);
-  }
-);
