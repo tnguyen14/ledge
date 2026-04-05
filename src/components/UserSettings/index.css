@@ -79,6 +79,22 @@
         outline: 2px solid var(--color-blue-grey-darken-4);
         outline-offset: 1px;
       }
+      &.used {
+        position: relative;
+        &::after {
+          content: 'x';
+          font-size: 1rem;
+        }
+      }
+      &.selected {
+        outline: 2px solid var(--color-blue-grey-darken-4);
+        outline-offset: 1px;
+        position: relative;
+        &::after {
+          content: '✓';
+          font-size: 1rem;
+        }
+      }
     }
   }
   .item-actions {

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -39,6 +39,10 @@ function UserSettings() {
   const saving = useSelector((state) => state.app.savingUserSettings);
   const { accounts, expenseCategories, timezoneToStore } = useSelector(
     (state) => state.meta
+  );
+  const usedColors = useMemo(
+    () => new Set(expenseCategories.map((c) => c.color).filter(Boolean)),
+    [expenseCategories]
   );
 
   const saveUserSettings = useCallback(async () => {
@@ -180,7 +184,10 @@ function UserSettings() {
                         {Object.keys(COLOR_PALETTE).map((name) => (
                           <button
                             key={name}
-                            className="swatch"
+                            className={classnames('swatch', {
+                              used: usedColors.has(name) && name !== cat.color,
+                              selected: name === cat.color
+                            })}
                             style={{ backgroundColor: `var(--color-${name})` }}
                             title={name}
                             onClick={() => {
