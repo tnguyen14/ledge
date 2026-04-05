@@ -1,3 +1,2 @@
-- how to retroactively update all old transactions?
-  - make gas -> transportation
 - old transactions (like in 2019) does not have the type attribute - resulting in error in calculating average
+- find transactions with the same merchant name but different categories

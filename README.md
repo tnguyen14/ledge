@@ -23,6 +23,13 @@ Log into the app, and copy the JWT token. Set it with
 export JWT_TOKEN=<>
 ```
 
+### Metadata lookup
+
+```sh
+./bin/get_metadata.sh
+./bin/get_metadata.sh --category
+```
+
 ### Transaction lookup
 
 To find a transaction locally by merchant
@@ -30,6 +37,17 @@ To find a transaction locally by merchant
 ```sh
 export env=dev # or env=prod
 ./bin/find_transactions.js -m "merchant name"
+
+# number of results
+./bin/find_transactions.js --category "dineout" | jq 'length'
+```
+
+### Update transaction with lookup
+
+```sh
+./bin/find_transactions.js --category "gas" --limit 5 \
+  | jq -r '.[].id' \
+  | xargs -I{} ./bin/update_transaction.js {} --category transportation
 ```
 
 ### Bad merchant data problems

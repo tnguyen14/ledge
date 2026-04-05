@@ -11,6 +11,7 @@ program
   .option('-c, --category <category>')
   .option('--id <id>')
   .option('--date <date>', 'date in MM-DD-YYYY format')
+  .option('--limit <number>', 'limit number of results')
   .option('-d, --debug');
 program.parse();
 
@@ -38,14 +39,13 @@ if (!options.merchant && !options.category && !options.id && !options.date) {
 }
 
 if (options.id) {
-  console.log(`Searching for transaction with id ${options.id}`);
   getJson(`${LISTS_URLS[env]}/ledge/tri/items/${options.id}`, {
     headers: {
       Authorization: `Bearer ${token}`
     }
   }).then(
     (data) => {
-      console.log(data);
+      console.log(JSON.stringify(data, null, 2));
     },
     (err) => {
       console.error('Something went wrong');
@@ -72,15 +72,6 @@ if (options.id) {
     where.push({ field: 'date', op: '<', value: end.toISOString() });
   }
 
-  const label = [
-    options.merchant && `merchant ${options.merchant}`,
-    options.category && `category ${options.category}`,
-    options.date && `date ${options.date}`
-  ]
-    .filter(Boolean)
-    .join(' and ');
-  console.log(`Searching for transactions with ${label}`);
-
   const query = stringify({ where });
 
   if (options.debug) {
@@ -93,8 +84,10 @@ if (options.id) {
     }
   }).then(
     (data) => {
-      console.log(`Found ${data.length} transactions`);
-      console.log(data);
+      const results = options.limit
+        ? data.slice(0, parseInt(options.limit))
+        : data;
+      console.log(JSON.stringify(results, null, 2));
     },
     (err) => {
       console.error('Something went wrong');
