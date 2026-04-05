@@ -8,6 +8,7 @@ import { getToken } from '@tridnguyen/auth/server.js';
 
 program
   .option('-m, --merchant <merchant>')
+  .option('-c, --category <category>')
   .option('--id <id>')
   .option('--date <date>', 'date in MM-DD-YYYY format')
   .option('-d, --debug');
@@ -30,8 +31,10 @@ const LISTS_URLS = {
 
 const env = process.env.env;
 
-if (!options.merchant && !options.id && !options.date) {
-  throw new Error("Missing option: provide '--merchant', '--id', or '--date'");
+if (!options.merchant && !options.category && !options.id && !options.date) {
+  throw new Error(
+    "Missing option: provide '--merchant', '--category', '--id', or '--date'"
+  );
 }
 
 if (options.id) {
@@ -56,6 +59,10 @@ if (options.id) {
     where.push({ field: 'merchant', op: '==', value: options.merchant });
   }
 
+  if (options.category) {
+    where.push({ field: 'category', op: '==', value: options.category });
+  }
+
   if (options.date) {
     const [month, day, year] = options.date.split('-');
     const start = new Date(year, month - 1, day);
@@ -67,6 +74,7 @@ if (options.id) {
 
   const label = [
     options.merchant && `merchant ${options.merchant}`,
+    options.category && `category ${options.category}`,
     options.date && `date ${options.date}`
   ]
     .filter(Boolean)
