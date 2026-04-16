@@ -47,7 +47,9 @@ function Week(props) {
         if (recurringItem.recurrencePeriod == 'week') {
           const numWeeksSinceSet = getWeeksDifference({
             dateStart: start,
-            dateEnd: recurringItem.date
+            dateEnd: DateTime.fromISO(recurringItem.date, { zone: TIMEZONE })
+              .startOf('day')
+              .toISO()
           });
           // recurring item's date is after the current week
           if (numWeeksSinceSet < 0) {
@@ -62,17 +64,28 @@ function Week(props) {
           const weekStartDate = getDate(start.toJSDate());
           const weekEndDate = getDate(end.toJSDate());
           const recurringDate = Number(recurringItem.recurrenceDay);
-          let isRecurringWithinWeek =
+          let isRecurringDateWithinWeek =
             weekStartDate <= recurringDate && recurringDate <= weekEndDate;
           // start at the end of a month, so start date is higher than end date
           if (weekStartDate > weekEndDate) {
-            isRecurringWithinWeek =
+            isRecurringDateWithinWeek =
               weekStartDate <= recurringDate || recurringDate <= weekEndDate;
           }
-          if (isRecurringWithinWeek) {
+          if (isRecurringDateWithinWeek) {
+            // find the date the recurrence would be in this week
+            // in order to calculate the months difference
+            let recurringDateInThisWeek = start.set({ day: recurringDate });
+
+            // if the week spans 2 months, and the reccuring date
+            // falls in the later month
+            if (weekStartDate > weekEndDate && recurringDate <= weekEndDate) {
+              recurringDateInThisWeek = end.set({ day: recurringDate });
+            }
             const numMonthsSinceSet = getMonthsDifference({
-              dateStart: start,
-              dateEnd: recurringItem.date
+              dateStart: recurringDateInThisWeek,
+              dateEnd: DateTime.fromISO(recurringItem.date, { zone: TIMEZONE })
+                .startOf('day')
+                .toISO()
             });
             if (numMonthsSinceSet < 0) {
               return applicable;
@@ -97,7 +110,9 @@ function Week(props) {
           ) {
             const numYearsSinceSet = getYearsDifference({
               dateStart: recurringDateInThisYear,
-              dateEnd: recurringItem.date
+              dateEnd: DateTime.fromISO(recurringItem.date, { zone: TIMEZONE })
+                .startOf('day')
+                .toISO()
             });
             if (numYearsSinceSet < 0) {
               return applicable;
