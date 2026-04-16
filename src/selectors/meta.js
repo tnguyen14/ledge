@@ -27,9 +27,13 @@ export const getRecurringTransactions = createSelector(
       }
       expired.push(transaction);
     });
+    const byMerchant = (a, b) => a.merchant.localeCompare(b.merchant);
+    const byMostRecentExpiration = (a, b) =>
+      b.recurrenceEndDate.localeCompare(a.recurrenceEndDate);
+
     return {
-      expired,
-      active
+      active: active.sort(byMerchant),
+      expired: expired.sort(byMostRecentExpiration)
     };
   }
 );
