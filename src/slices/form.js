@@ -87,7 +87,12 @@ const timeField = {
   label: 'Time',
   name: 'time',
   attributes: {
-    required: true
+    required: true,
+    // time inputs default to step=60 (minutes only), which hides seconds and
+    // marks values with seconds as a step mismatch. step=1 enables seconds
+    // to match TIME_FIELD_FORMAT ('HH:mm:ss').
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#step
+    step: 1
   }
 };
 

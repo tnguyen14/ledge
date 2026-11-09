@@ -9,7 +9,7 @@ export const LISTS_SCOPE = 'read:list write:list';
 export const PROFILE_SCOPE = 'openid profile email';
 
 export const DATE_FIELD_FORMAT = 'yyyy-MM-dd';
-export const TIME_FIELD_FORMAT = 'HH:mm';
+export const TIME_FIELD_FORMAT = 'HH:mm:ss';
 
 export const DISPLAY_DATE_FORMAT = 'MM/dd/yy';
 export const DISPLAY_DATE_WITH_DAY_FORMAT = `${DISPLAY_DATE_FORMAT} (EEE)`;
